@@ -1,6 +1,6 @@
 /*
 MIT License
-Copyright (c) 2023 Peter Kimball
+Copyright (c) 2023-2026 Peter Kimball
 (See LICENSE.txt for full text)
 
 mk60_decode.h -- Decode raw MK60 CAN message bytes into physical values.

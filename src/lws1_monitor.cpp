@@ -1,6 +1,6 @@
 /*
 MIT License
-Copyright (c) 2023 Peter Kimball
+Copyright (c) 2023-2026 Peter Kimball
 (See LICENSE.txt for full text)
 
 brz_lws1_monitor.cpp -- MK60 LWS1 (steering angle) CAN message monitor

@@ -1,6 +1,6 @@
 /*
 MIT License
-Copyright (c) 2023 Peter Kimball
+Copyright (c) 2023-2026 Peter Kimball
 (See LICENSE.txt for full text)
 
 brz_steering_test.cpp -- BRZ steering angle CAN output test

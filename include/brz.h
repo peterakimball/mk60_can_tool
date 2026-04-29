@@ -1,6 +1,6 @@
 /*
 MIT License
-Copyright (c) 2023 Peter Kimball
+Copyright (c) 2023-2026 Peter Kimball
 (See LICENSE.txt for full text)
 
 brz.h -- Encode MK60-derived values into Subaru BRZ / Toyota 86 / Scion FR-S
