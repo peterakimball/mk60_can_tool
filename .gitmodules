@@ -1,0 +1,3 @@
+[submodule "lib/Adafruit_CAN"]
+	path = lib/Adafruit_CAN
+	url = https://github.com/adafruit/Adafruit_CAN.git
