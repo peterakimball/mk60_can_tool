@@ -222,6 +222,12 @@ void setup() {
         Serial.println("0xD4 wheel speeds | 0x18 steering | 0x152 BLS");
     }
 
+    // The MK60 sends up to 5 RTRs at boot then stops. If the Feather boots
+    // after those are exhausted, no RTR will arrive and the MK60 stays silent.
+    // Sending the ICL1 burst unconditionally at startup covers this case.
+    // A redundant burst when the MK60 is already awake is harmless.
+    send_keepalive_burst();
+
     g_last_report_ms = millis();
 }
 
