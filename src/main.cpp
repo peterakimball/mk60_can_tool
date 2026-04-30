@@ -207,9 +207,6 @@ static void transmit_bls() {
 void setup() {
     Serial.begin(PROJECT_SERIAL_BAUD);
 
-    unsigned long t = millis();
-    while (!Serial && (millis() - t) < 1000) {}
-
     pinMode(PIN_CAN_STANDBY, OUTPUT);
     digitalWrite(PIN_CAN_STANDBY, LOW);
     pinMode(PIN_CAN_BOOSTEN, OUTPUT);
