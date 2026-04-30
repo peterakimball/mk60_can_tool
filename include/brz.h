@@ -46,7 +46,9 @@ Signal encoding (from the canonical ft86 CAN database and bench-verified):
 // Note: the ft86 CAN database documents 0.015694 km/h/LSB (the OEM encoding).
 // The Haltech BRZ template interprets the field at 1/28 mph/LSB -- empirically
 // confirmed across raw values 1000/2000/3000/4000 to within display rounding.
-#define BRZ_WHEEL_SPEED_FACTOR    (1.60934f / 28.0f)   // 0.057476 km/h/LSB
+#define BRZ_KMH_PER_MPH           (1.60934f)            // km/h per mph
+#define BRZ_WHEEL_SPEED_MPH_DENOM (28.0f)              // Haltech BRZ mph denominator, bench verified
+#define BRZ_WHEEL_SPEED_FACTOR    (BRZ_KMH_PER_MPH / BRZ_WHEEL_SPEED_MPH_DENOM)  // 0.057476 km/h/LSB
 
 // Steering: big-endian (Motorola) signed int16, 0.1 deg/LSB, positive = right.
 // Bench verified: Haltech reads 0x18 bytes 0-1 as Motorola byte order.

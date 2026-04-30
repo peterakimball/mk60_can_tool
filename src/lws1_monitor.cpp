@@ -21,6 +21,7 @@ Build and upload:
 
 CANSAME5x CAN;
 #include <mk60.h>
+#include <mk60_decode.h>
 #include <project.h>
 
 // ---------------------------------------------------------------------------
@@ -80,7 +81,7 @@ static void print_lws1(const uint8_t *data) {
     uint16_t raw16   = (uint16_t)data[0] | ((uint16_t)data[1] << 8);
     uint16_t mag_raw = raw16 & 0x7FFF;
     bool     negative = (raw16 & 0x8000) != 0;
-    float    angle    = (float)mag_raw * 0.045f;
+    float    angle    = (float)mag_raw * MK60_STEERING_ANGLE_SCALE;
     if (negative) angle = -angle;
 
     Serial.print("angle=");
@@ -91,7 +92,7 @@ static void print_lws1(const uint8_t *data) {
     uint16_t raw16v   = (uint16_t)data[2] | ((uint16_t)data[3] << 8);
     uint16_t vel_raw  = raw16v & 0x7FFF;
     bool     vel_neg  = (raw16v & 0x8000) != 0;
-    float    vel      = (float)vel_raw * 0.045f;
+    float    vel      = (float)vel_raw * MK60_STEERING_ANGLE_SCALE;
     if (vel_neg) vel = -vel;
 
     Serial.print("vel=");

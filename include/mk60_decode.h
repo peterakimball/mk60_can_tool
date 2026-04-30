@@ -15,6 +15,13 @@ Physical units:
 #pragma once
 #include <stdint.h>
 #include <stdbool.h>
+#include <project.h>
+
+// MK60 0x1F0 wheel speed field: 12-bit unsigned, km/h per LSB
+#define MK60_WHEEL_SPEED_SCALE  (0.0625f)   // km/h per LSB
+
+// MK60 0x1F5 LWS steering angle: 15-bit magnitude + sign, degrees per LSB
+#define MK60_STEERING_ANGLE_SCALE  (0.045f) // degrees per LSB
 
 // ---------------------------------------------------------------------------
 // 0x1F0 (MK60_ASC2_ID = 496) -- Wheel speeds
@@ -39,7 +46,7 @@ Physical units:
 static inline float mk60_decode_wheel_speed_field(const uint8_t *data, int byte_offset) {
     uint16_t raw = (uint16_t)data[byte_offset]
                  | ((uint16_t)(data[byte_offset + 1] & 0x0F) << 8);
-    return (float)raw * 0.0625f;
+    return (float)raw * MK60_WHEEL_SPEED_SCALE * WHEEL_SPEED_CORRECTION_FACTOR;
 }
 
 // Populates four wheel speeds in km/h. Always returns true -- the upper nibble
@@ -64,7 +71,7 @@ static inline float mk60_decode_steering_angle(const uint8_t *data) {
     uint16_t raw       = (uint16_t)data[0] | ((uint16_t)data[1] << 8);
     uint16_t magnitude = raw & 0x7FFF;
     bool     negative  = (raw & 0x8000) != 0;
-    float    angle     = (float)magnitude * 0.045f;
+    float    angle     = (float)magnitude * MK60_STEERING_ANGLE_SCALE;
     return negative ? -angle : angle;
 }
 
