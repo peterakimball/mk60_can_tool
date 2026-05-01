@@ -122,7 +122,7 @@ pio run -e <environment> -t upload
 
 | Environment | Source file | Purpose |
 |-------------|-------------|---------|
-| `adafruit_feather_m4_can` | `main.cpp` | **Production translator firmware** |
+| `mk60_translator` | `main.cpp` | **Production translator firmware** |
 | `brz_wheel_sweep_test` | `brz_wheel_sweep_test.cpp` | Sweeps all four wheel speed channels to verify Haltech reception |
 | `brz_steering_test` | `brz_steering_test.cpp` | Steps through left/center/right steering positions |
 | `lws1_monitor` | `lws1_monitor.cpp` | Prints raw MK60 `0x1F5` bytes to serial; useful for LWS diagnosis |
