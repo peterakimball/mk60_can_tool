@@ -48,6 +48,27 @@ Haltech does not understand natively. This translator sits on the shared
 * Ensure exactly two 120Ω termination resistors are present, one at each physical end of the bus
 * The Haltech must have **Vehicle CAN receive-only mode disabled** to acknowledge frames
 
+### CAN bus termination
+
+A properly terminated CAN bus requires exactly two 120Ω resistors, one at each
+physical end of the bus. With the bus unpowered, measuring resistance between
+CAN_H and CAN_L should read **60Ω** (two 120Ω resistors in parallel).
+
+| Measured resistance | Diagnosis |
+|---------------------|----------|
+| 60Ω | Correct — two terminators present |
+| 120Ω | Only one terminator present |
+| 40Ω or less | More than two terminators present |
+| Open circuit | No terminators connected |
+
+> **Warning:** The Adafruit Feather M4 CAN Express has an onboard 120Ω
+> termination resistor **enabled by default** via a solder jumper. Depending
+> on where the Feather sits in your physical bus layout, this may be one of
+> your two required terminators, or it may be an unwanted additional terminator.
+> Check the jumper and your wiring carefully before powering the bus.
+> See the [Feather M4 CAN Express schematic](https://learn.adafruit.com/adafruit-feather-m4-can-express/downloads)
+> for the jumper location.
+
 ## Safety notice
 
 This software is provided for use in motorsport and experimental vehicle
