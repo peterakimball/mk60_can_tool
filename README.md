@@ -127,6 +127,7 @@ pio run -e <environment> -t upload
 | `brz_steering_test` | `brz_steering_test.cpp` | Steps through left/center/right steering positions |
 | `lws1_monitor` | `lws1_monitor.cpp` | Prints raw MK60 `0x1F5` bytes to serial; useful for LWS diagnosis |
 | `vin_test` | `vin_test.cpp` | Tests whether MK60 validates the VIN in the `0x610` handshake |
+| `wakeup_test` | `wakeup_test.cpp` | Determines which keepalive messages are required to wake the MK60 |
 
 ## Serial diagnostics
 
